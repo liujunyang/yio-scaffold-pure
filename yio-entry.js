@@ -32,7 +32,6 @@ let util = {
 }
 
 function run (_process) {
-	const util = require('./util');
 	const args = util.formatArgs(_process.argv);
 
 	return function(callback) {
@@ -49,4 +48,32 @@ function run (_process) {
 
 run(process)(context => {
 	console.log('进入实际项目', context)
+	swtich (context.taskName) {
+		case 'dev-daily':
+		case 'dev-pre':
+		case 'dev-prod':
+		case 'build-daily':
+		case 'build-pre':
+		case 'build-prod':
+			break;
+		default:
+			console.log(`task ${context.taskName} is not supported. Task supported list:\n\n${[
+				'-  dev-daily                  dev daily',
+        '-  dev-pre                    dev pre',
+        '-  dev-prod                   dev prod',
+        '',
+        '-  build-daily                build daily',
+        '-  build-pre                  build pre',
+        '-  build-prod                 build prod',
+			].join('\n')}\n`)
+			return;
+	}
+
+	if (/dev-/.test(context.taskName)) {
+		console.log(11)
+	}
+
+	if (/build-/.test(context.taskName)) {
+		console.log(22)
+	}
 })
