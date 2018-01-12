@@ -48,7 +48,7 @@ function run (_process) {
 
 run(process)(context => {
 	console.log('进入实际项目', context)
-	swtich (context.taskName) {
+	switch (context.taskName) {
 		case 'dev-daily':
 		case 'dev-pre':
 		case 'dev-prod':
