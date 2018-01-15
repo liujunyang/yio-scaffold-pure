@@ -74,6 +74,5 @@ run(process)(context => {
 	}
 
 	if (/build-/.test(context.taskName)) {
-		console.log(22)
 	}
 })
