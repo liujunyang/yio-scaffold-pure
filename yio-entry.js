@@ -71,6 +71,7 @@ run(process)(context => {
 
 	if (/dev-/.test(context.taskName)) {
 		console.log(11)
+		require('./handler/webpack.dev')(context);
 	}
 
 	if (/build-/.test(context.taskName)) {
