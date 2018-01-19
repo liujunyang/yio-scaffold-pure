@@ -11,7 +11,7 @@ module.exports = (context) => {
     const path = require('path');
 
     // reset context
-    const userConfig = require('./util-get-user-config')({ ...context, webpack, WebpackDevServer });
+    const userConfig = require('./util-get-user-config')(Object.assign({}, context, webpack, WebpackDevServer));
 
     const { fastConfig } = userConfig;
     const { replace } = fastConfig;
