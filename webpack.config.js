@@ -1,4 +1,6 @@
-const path = require('path');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: "./project-template/default/index.js", // string | object | array
@@ -15,7 +17,7 @@ module.exports = {
     filename: "bundle.js", // string
     // the filename template for entry chunks
 
-    publicPath: "/assets/", // string
+    publicPath: "/", // string
     // the url to the output directory resolved relative to the HTML page
 
     library: "MyLibrary", // string,
@@ -110,7 +112,13 @@ module.exports = {
   },
 
   plugins: [
-    // ...
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './project-template/default/index.html',
+      chunks: ['main'],
+      inject: true
+    }),
   ],
   // list of additional plugins
 
