@@ -71,7 +71,8 @@ run(process)(context => {
 
 	if (/dev-/.test(context.taskName)) {
 		console.log(44, context)
-		require('./handler/webpack.dev')(context);
+		// require('./handler/webpack.dev')(context);
+		let cp = require('child_process').spawn('npm run dev')
 	}
 
 	if (/build-/.test(context.taskName)) {
